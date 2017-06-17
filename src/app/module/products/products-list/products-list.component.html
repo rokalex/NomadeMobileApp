@@ -1,0 +1,31 @@
+<form>
+  <div class="input-field">
+    <!-- <input [(ngModel)]="listfilter" [ngModelOptions]="{standalone:true}" type="search"> -->
+    <input name="search" type="search">
+    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+    <i class="material-icons">close</i>
+  </div>
+</form>
+
+<table class="table-responsive centered striped" *ngIf='products && products.length'>
+  <thead>
+    <tr>
+      <th><a (click)="myPublicMethod()" class="waves-effect waves-light btn"><i class="material-icons left">{{ displayImg ? 'visibility_off' : 'visibility'}}</i>{{ displayImg ? 'Cacher images' : 'Afficher images'}}</a></th>
+      <th>Produit</th>
+      <th>Code</th>
+      <th>Date</th>
+      <th>Prix</th>
+      <th>Evaluation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let product of products' >
+      <td><img *ngIf="displayImg" class="responsive-img" height="50" width="50" [src]='product.imageUrl' alt="image produit" /></td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCode}}</td>
+      <td>{{product.releaseDate}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.starRating}}</td>
+    </tr>
+  </tbody>
+</table>

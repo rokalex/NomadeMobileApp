@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './module/layout/header/header.component';
 import { FooterComponent } from './module/layout/footer/footer.component';
 import { BodyComponent } from './module/layout/body/body.component';
+import { ProductsListComponent } from './module/products/products-list/products-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    ProductsListComponent
   ],
   imports: [
     MaterializeModule,
