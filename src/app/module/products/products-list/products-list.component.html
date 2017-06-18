@@ -1,7 +1,10 @@
+<p>
+  {{listfilter | reversword }}
+</p>
 <form>
   <div class="input-field">
     <!-- <input [(ngModel)]="listfilter" [ngModelOptions]="{standalone:true}" type="search"> -->
-    <input name="search" type="search">
+    <input [(ngModel)]="listfilter" name="search" type="search">
     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
     <i class="material-icons">close</i>
   </div>
