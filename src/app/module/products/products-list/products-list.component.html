@@ -22,12 +22,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor='let product of products' >
+    <tr *ngFor='let product of products | products:listfilter' >
       <td><img *ngIf="displayImg" class="responsive-img" height="50" width="50" [src]='product.imageUrl' alt="image produit" /></td>
       <td>{{product.productName}}</td>
       <td>{{product.productCode}}</td>
       <td>{{product.releaseDate}}</td>
-      <td>{{product.price}}</td>
+      <td>{{product.price | currency:'CHF'}}</td>
       <td>{{product.starRating}}</td>
     </tr>
   </tbody>

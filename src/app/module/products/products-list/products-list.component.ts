@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-
+  public listfilter : string = 'cart';
   public displayImg = true;
+
   myPublicMethod(){
     this.displayImg = !this.displayImg;
     //toogle le booléen
   }
 
-  products = [
+  products: IProduct[] = [
       {
           "id": 1,
           "productName": "Leaf Rake",
@@ -69,6 +71,17 @@ export class ProductsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('toto')
   }
 
+}
+export interface IProduct{
+  id: number;
+  productName: string;
+  productCode: string;
+  releaseDate: string;
+  description: string;
+  price: number;
+  starRating: number;
+  imageUrl: string;
 }

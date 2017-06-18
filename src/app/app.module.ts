@@ -2,26 +2,30 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './module/layout/header/header.component';
 import { FooterComponent } from './module/layout/footer/footer.component';
-import { BodyComponent } from './module/layout/body/body.component';
 import { ProductsListComponent } from './module/products/products-list/products-list.component';
 import { ReverswordPipe } from './shared/pipes/reversword.pipe';
+import { ProductsPipe } from './shared/pipes/products.pipe';
+import { CurrencyPipe } from './shared/pipes/currency.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent,
     ProductsListComponent,
-    ReverswordPipe
+    ReverswordPipe,
+    ProductsPipe,
+    CurrencyPipe
   ],
   imports: [
     MaterializeModule,
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
