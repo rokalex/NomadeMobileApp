@@ -1,5 +1,5 @@
 import { MaterializeModule } from 'angular2-materialize';
-
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -27,7 +27,8 @@ import { StarRatingComponent } from './shared/components/star-rating/star-rating
   imports: [
     MaterializeModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

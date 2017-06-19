@@ -10,7 +10,7 @@
   </div>
 </form>
 
-<table class="table-responsive centered striped" *ngIf='products && products.length'>
+<table class="table-responsive centered striped">
   <thead>
     <tr>
       <th><a (click)="myPublicMethod()" class="waves-effect waves-light btn"><i class="material-icons left">{{ displayImg ? 'visibility_off' : 'visibility'}}</i>{{ displayImg ? 'Cacher images' : 'Afficher images'}}</a></th>
@@ -22,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor='let product of products | products:listfilter' >
+    <tr *ngFor='let product of (products | async | products:listfilter)'>
       <td><img *ngIf="displayImg" class="responsive-img" height="50" width="50" [src]='product.imageUrl' alt="image produit" /></td>
       <td>{{product.productName}}</td>
       <td>{{product.productCode}}</td>

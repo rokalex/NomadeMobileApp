@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct, ProductService } from './../../../shared/models/product.service';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -9,20 +10,25 @@ import { IProduct, ProductService } from './../../../shared/models/product.servi
 })
 export class ProductsListComponent implements OnInit {
   public listfilter : string = '';
-  public displayImg = true;
+  public displayImg : boolean = true;
+  products: Observable<IProduct[]>;
 
   myPublicMethod(){
     this.displayImg = !this.displayImg;
     //toogle le booléen
   }
 
-  products: IProduct[];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    console.log('toto')
-    this.products = this.productService.getProducts()
-  }
+      console.log('Im ngOnInit');
+//       this.productService.getProducts()
+//         .subscribe(
+//           products => this.products = products,
+//           error => console.error(error)
+//         )
+      this.products = this.productService.getProducts();
+   }
 
 }
