@@ -1,0 +1,3 @@
+<p>
+  <span *ngFor="let rate of [1,2,3,4,5]" [class.iconColor]="rate <= rating" (click)="rateIt(rate)" class="material-icons star">star_rate</span>
+</p>

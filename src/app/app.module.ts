@@ -11,6 +11,7 @@ import { ProductsListComponent } from './module/products/products-list/products-
 import { ReverswordPipe } from './shared/pipes/reversword.pipe';
 import { ProductsPipe } from './shared/pipes/products.pipe';
 import { CurrencyPipe } from './shared/pipes/currency.pipe';
+import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CurrencyPipe } from './shared/pipes/currency.pipe';
     ProductsListComponent,
     ReverswordPipe,
     ProductsPipe,
-    CurrencyPipe
+    CurrencyPipe,
+    StarRatingComponent
   ],
   imports: [
     MaterializeModule,
