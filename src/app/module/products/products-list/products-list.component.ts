@@ -8,7 +8,7 @@ import { IProduct, ProductService } from './../../../shared/models/product.servi
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  public listfilter : string = 'cart';
+  public listfilter : string = '';
   public displayImg = true;
 
   myPublicMethod(){
