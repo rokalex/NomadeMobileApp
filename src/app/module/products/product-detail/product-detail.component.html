@@ -1,6 +1,60 @@
-<p>
-   We're currently visiting a product detail page
- </p>
- <p class="text-center">
-   <a routerLink="../" class="waves-effect waves-light btn">Retour à la liste</a>
- </p>
+
+<div class="row" *ngIf="product$ | async; let product; else noProduct">
+
+
+<div class="row">
+   <div class="col s12">
+       {{pageTitle + ": " + product.productName}}
+    </div>
+    <p class="text-center">
+      <a class="waves-effect waves-light btn" routerLink="../">Back to products</a>
+      <a class="waves-effect waves-light btn" [routerLink]="['../', getNextProductId(product.id)]">Next product {{ getNextProductId(product.id) }}</a>
+    </p>
+</div>
+
+  <div class="row">
+     <div class="col s6 m6">
+
+        <div class="row">
+           <div class="col s6">Name :</div>
+           <div class="col s12">{{product.productName}}</div>
+        </div>
+        <div class="row">
+           <div class="col s6">Code:</div>
+           <div class="col s12">{{product.productCode}}</div>
+        </div>
+        <div class="row">
+           <div class="col s6">Description:</div>
+           <div class="col s12">{{product.description}}</div>
+        </div>
+        <div class="row">
+           <div class="col s6">Availability:</div>
+           <div class="col s12">{{product.releaseDate}}</div>
+        </div>
+        <div class="row">
+           <div class="col s6">Price:</div>
+           <div class="col s12">{{product.price|currency:"USD":true}}</div>
+        </div>
+        <div class="row">
+           <div class="col s6">5 Star Rating:</div>
+           <div class="col s12"></div>
+        </div>
+
+
+     </div>
+     <div class="col s6 m6">
+        <img class="center-block img-responsive"
+             [style.width.px]="200"
+             [style.margin.px]="2"
+             [src]="product.imageUrl"
+             [title]="product.productName">
+     </div>
+  </div>
+</div>
+
+
+
+
+ <ng-template #noProduct>
+   <h1>No product found!</h1>
+ </ng-template>

@@ -22,6 +22,9 @@ import { CurrencyPipe } from './shared/pipes/currency.pipe';
 //router
 import { APP_ROUTES } from './app.routes';
 import { RouterModule, Routes } from '@angular/router';
+//guard resolver
+import { ProductIdGuard } from './shared/guards/product-id.guard';
+import { ProductResolve } from './shared/resolves/product.resolve';
 
 
 
@@ -46,7 +49,7 @@ import { RouterModule, Routes } from '@angular/router';
     HttpModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [ProductService],
+  providers: [ProductService, ProductResolve, ProductIdGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
