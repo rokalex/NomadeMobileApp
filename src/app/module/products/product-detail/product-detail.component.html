@@ -3,9 +3,6 @@
 
 
 <div class="row">
-   <div class="col s12">
-       {{pageTitle + ": " + product.productName}}
-    </div>
     <p class="text-center">
       <a class="waves-effect waves-light btn" routerLink="../">Back to products</a>
       <a class="waves-effect waves-light btn" [routerLink]="['../', getNextProductId(product.id)]">Next product {{ getNextProductId(product.id) }}</a>
