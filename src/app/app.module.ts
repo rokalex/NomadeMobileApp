@@ -3,7 +3,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //services
 import { ProductService } from './shared/models/product.service';
 //components
@@ -46,6 +46,7 @@ import { ProductResolve } from './shared/resolves/product.resolve';
     MaterializeModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(APP_ROUTES)
   ],

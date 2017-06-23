@@ -1,57 +1,111 @@
 
-<div class="row" *ngIf="product$ | async; let product; else noProduct">
+  <div class="row" *ngIf="product$ | async; let product; else noProduct">
+
+    <div class="row">
+        <p class="text-center">
+          <a class="waves-effect waves-light btn" routerLink="../">Back to products</a>
+          <a class="waves-effect waves-light btn" [routerLink]="['../', getNextProductId(product.id)]">Next product {{ getNextProductId(product.id) }}</a>
+          <a class="waves-effect waves-light btn" (click)="toggleMode()">{{ isEdit() ? 'Cancel' : 'Edit' }}</a>
+        </p>
+    </div>
+
+    <div class="row" *ngIf="!isEdit(); else myEditForm">
+       <div class="col s6 m6">
+
+          <div class="row">
+             <div class="col s6">Name :</div>
+             <div class="col s12">{{product.productName}}</div>
+          </div>
+          <div class="row">
+             <div class="col s6">Code:</div>
+             <div class="col s12">{{product.productCode}}</div>
+          </div>
+          <div class="row">
+             <div class="col s6">Description:</div>
+             <div class="col s12">{{product.description}}</div>
+          </div>
+          <div class="row">
+             <div class="col s6">Availability:</div>
+             <div class="col s12">{{product.releaseDate}}</div>
+          </div>
+          <div class="row">
+             <div class="col s6">Price:</div>
+             <div class="col s12">{{product.price|currency:"USD":true}}</div>
+          </div>
+          <div class="row">
+             <div class="col s6">Evaluation:</div>
+             <div class="col s12"><app-star-rating [rating]="product.starRating" (ratingClicked)="product.starRating = $event"> </app-star-rating></div>
+          </div>
+       </div>
+       <div class="col s6 m6">
+          <img class="center-block img-responsive"
+               [style.width.px]="200"
+               [style.margin.px]="2"
+               [src]="product.imageUrl"
+               [title]="product.productName">
+       </div>
+     </div><!--end row of normal detail component-->
+
+    <ng-template #myEditForm>
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+
+       <div class="col s6 m6">
+
+          <div class="row">
+             <div class="col s6">Name :</div>
+             <div class="col s12"><input type="text" id="productName" class="form-control" formControlName="productName" required /></div>
+          </div>
+          <div class="row">
+             <div class="col s6">Code:</div>
+             <div class="col s12"><input type="text" id="productCode" class="form-control" formControlName="productCode" required /></div>
+          </div>
+          <div class="row">
+             <div class="col s6">Description:</div>
+             <div class="col s12"><textarea class="form-control materialize-textarea" formControlName="description"></textarea></div>
+          </div>
+          <div class="row">
+             <div class="col s6">Availability:</div>
+             <div class="col s12"><input type="text" id="productAvailability" class="form-control" formControlName="releaseDate" /></div>
+          </div>
+          <div class="row">
+             <div class="col s6">Price:</div>
+             <div class="col s12"><input type="text" id="productPrice" class="form-control" formControlName="price" required /></div>
+          </div>
+          <div class="row">
+             <div class="col s6">Evaluation:</div>
+             <div class="col s12"><app-star-rating [rating]="product.starRating" (ratingClicked)="product.starRating = $event"> </app-star-rating></div>
+          </div>
+       </div>
 
 
-<div class="row">
-    <p class="text-center">
-      <a class="waves-effect waves-light btn" routerLink="../">Back to products</a>
-      <a class="waves-effect waves-light btn" [routerLink]="['../', getNextProductId(product.id)]">Next product {{ getNextProductId(product.id) }}</a>
-    </p>
-</div>
+       <div class="col s6 m6">
+          <img class="center-block img-responsive"
+               [style.width.px]="200"
+               [style.margin.px]="2"
+               [src]="product.imageUrl"
+               [title]="product.productName">
+       </div>
 
-  <div class="row">
-     <div class="col s6 m6">
+       <div class="row">
+         <div class="col s12">
+           <a class="waves-effect waves-light btn" (click)="initForm()">Reset</a>
+           <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+         </div>
+       </div>
 
-        <div class="row">
-           <div class="col s6">Name :</div>
-           <div class="col s12">{{product.productName}}</div>
-        </div>
-        <div class="row">
-           <div class="col s6">Code:</div>
-           <div class="col s12">{{product.productCode}}</div>
-        </div>
-        <div class="row">
-           <div class="col s6">Description:</div>
-           <div class="col s12">{{product.description}}</div>
-        </div>
-        <div class="row">
-           <div class="col s6">Availability:</div>
-           <div class="col s12">{{product.releaseDate}}</div>
-        </div>
-        <div class="row">
-           <div class="col s6">Price:</div>
-           <div class="col s12">{{product.price|currency:"USD":true}}</div>
-        </div>
-        <div class="row">
-           <div class="col s6">5 Star Rating:</div>
-           <div class="col s12"></div>
-        </div>
+      </div><!--End of detail product form-->
 
+      </form>
 
-     </div>
-     <div class="col s6 m6">
-        <img class="center-block img-responsive"
-             [style.width.px]="200"
-             [style.margin.px]="2"
-             [src]="product.imageUrl"
-             [title]="product.productName">
-     </div>
-  </div>
-</div>
+    </ng-template>
 
 
 
+  </div><!--row for page-->
 
- <ng-template #noProduct>
-   <h1>No product found!</h1>
- </ng-template>
+
+   <ng-template #noProduct>
+     <h1>No product found!</h1>
+   </ng-template>
